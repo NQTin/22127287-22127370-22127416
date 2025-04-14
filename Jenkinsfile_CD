@@ -135,7 +135,7 @@ pipeline {
                     // Tạo URL cho cleanup job
                     def jenkinsUrl = env.JENKINS_URL ?: 'http://jenkins:8080/'
                     def cleanupUrl = "${jenkinsUrl}job/cleanup_developer_deployment/parambuild?NAMESPACE=${NAMESPACE}"
-                    
+                    def cleanupJobName = "cleanup_developer_deployment"
                     echo """
                     ====== DEPLOYMENT INFORMATION ======
                     
@@ -180,7 +180,7 @@ pipeline {
         }
     }
 }
-
+}
 def getCommitId(serviceName, branch) {
     // Lấy commit ID của branch từ repository forked của bạn
     def commitId = sh(
