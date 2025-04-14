@@ -1,0 +1,35 @@
+pipeline {
+    agent { label 'k8s-agent' }
+    parameters {
+        string(name: 'NAMESPACE', description: 'Namespace to clean up')
+    }
+    stages {
+        stage('Delete Helm Releases') {
+            steps {
+                script {
+                    echo "Deleting Helm releases in namespace: ${params.NAMESPACE}"
+                    
+                    // Lấy danh sách các Helm release trong namespace
+                    def releases = sh(
+                        script: "helm list -n ${params.NAMESPACE} -q",
+                        returnStdout: true
+                    ).trim().split("\n")
+                    
+                    for (release in releases) {
+                        if (release?.trim()) {
+                            echo "Uninstalling Helm release: ${release}"
+                            sh "helm uninstall ${release} -n ${params.NAMESPACE}"
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Delete Namespace') {
+            steps {
+                echo "Deleting namespace: ${params.NAMESPACE}"
+                sh "kubectl delete namespace ${params.NAMESPACE}"
+            }
+        }
+    }
+}
