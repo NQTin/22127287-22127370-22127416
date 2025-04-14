@@ -180,7 +180,7 @@ pipeline {
         }
     }
 }
-}
+
 def getCommitId(serviceName, branch) {
     // Lấy commit ID của branch từ repository forked của bạn
     def commitId = sh(
