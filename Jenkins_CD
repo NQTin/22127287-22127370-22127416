@@ -163,7 +163,12 @@ pipeline {
                     Run the cleanup job with parameter NAMESPACE=${NAMESPACE}
                     Cleanup URL: ${cleanupUrl}
                     """
-                }
+
+                    // Trigger cleanup job sau 24h nếu người dùng không tự cleanup
+                    build job: cleanupJobName,
+                        parameters: [string(name: 'NAMESPACE', value: "${NAMESPACE}")],
+                        wait: false,
+                        quietPeriod: 86400  // 24 giờ = 86400 giây
             }
         }
     }
