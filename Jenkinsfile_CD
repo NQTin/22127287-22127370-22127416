@@ -192,4 +192,3 @@ def getCommitId(serviceName, branch) {
     
     return commitId ?: branch  // Nếu không lấy được commit ID, sử dụng tên branch
 }
-}
