@@ -191,5 +191,5 @@ def getCommitId(serviceName, branch) {
     echo "Service: ${serviceName}, Branch: ${branch}, Commit ID: ${commitId}"
     
     return commitId ?: branch  // Nếu không lấy được commit ID, sử dụng tên branch
-
+}
 }
