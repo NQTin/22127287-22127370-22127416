@@ -150,15 +150,15 @@ pipeline {
                        http://petclinic.dev:${apiGatewayPort}
                     
                     Deployed services:
-                    - API Gateway: ${params.API_GATEWAY_BRANCH} (${env.API_GATEWAY_TAG})
-                    - Customers Service: ${params.CUSTOMERS_BRANCH} (${env.CUSTOMERS_TAG})
-                    - Vets Service: ${params.VETS_BRANCH} (${env.VETS_TAG})
-                    - Visits Service: ${params.VISITS_BRANCH} (${env.VISITS_TAG})
-                    - Admin Server: ${params.ADMIN_BRANCH} (${env.ADMIN_TAG})
-                    - Discovery Server: ${params.DISCOVERY_BRANCH} (${env.DISCOVERY_TAG})
-                    - Config Server: ${params.CONFIG_BRANCH} (${env.CONFIG_TAG})
-                    - GenAI Service: ${params.GENAI_BRANCH} (${env.GENAI_TAG})
-                    
+                    - API Gateway: ${params['api-gateway']} (${env.API_GATEWAY_TAG})
+                    - Customers Service: ${params['customers-service']} (${env.CUSTOMERS_TAG})
+                    - Vets Service: ${params['vets-service']} (${env.VETS_TAG})
+                    - Visits Service: ${params['visits-service']} (${env.VISITS_TAG})
+                    - Admin Server: ${params['admin-server']} (${env.ADMIN_TAG})
+                    - Discovery Server: ${params['discovery-server']} (${env.DISCOVERY_TAG})
+                    - Config Server: ${params['config-server']} (${env.CONFIG_TAG})
+                    - GenAI Service: ${params['genai-service']} (${env.GENAI_TAG})
+
                     To delete this deployment when you're done testing:
                     Run the cleanup job with parameter NAMESPACE=${NAMESPACE}
                     Cleanup URL: ${cleanupUrl}
